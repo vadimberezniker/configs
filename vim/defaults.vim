@@ -13,6 +13,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'antoinemadec/coc-fzf'
 Plug 'preservim/nerdcommenter'
+Plug 'rhysd/vim-clang-format'
 call plug#end()
 
 nmap <Leader>lb :Buffers<CR>
