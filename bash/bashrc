@@ -1,0 +1,9 @@
+function promptcmd() {
+  # Write history buffer to disk so that it's available immediately to new terminals.
+  history -a
+}
+
+export PROMPT_COMMAND=promptcmd
+
+
+
