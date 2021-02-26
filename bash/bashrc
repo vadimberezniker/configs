@@ -1,6 +1,14 @@
 function promptcmd() {
   # Write history buffer to disk so that it's available immediately to new terminals.
   history -a
+
+  # Include version control info & time in command prompt.
+  GIT_BRANCH=$(git branch 2>/dev/null | sed -n 's/^\*\ //p')
+  VC_SUMMARY=""
+  if [ -n "$GIT_BRANCH" ]; then
+    VC_SUMMARY="\n"'git: $GIT_BRANCH'
+  fi
+  PS1="[\t] \h \[\033[1;33m\]\w\[\033[0m\] \[\033[1;34m\]${VC_SUMMARY}\[\033[0m\]\\n$ "
 }
 
 export PROMPT_COMMAND=promptcmd
