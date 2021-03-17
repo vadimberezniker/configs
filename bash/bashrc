@@ -1,3 +1,6 @@
+source /usr/share/doc/fzf/examples/key-bindings.bash
+source /usr/share/doc/fzf/examples/completion.bash
+
 function promptcmd() {
   # Write history buffer to disk so that it's available immediately to new terminals.
   history -a
