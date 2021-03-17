@@ -14,6 +14,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'antoinemadec/coc-fzf'
 Plug 'preservim/nerdcommenter'
 Plug 'rhysd/vim-clang-format'
+Plug 'easymotion/vim-easymotion'
 call plug#end()
 
 nmap <Leader>lb :Buffers<CR>
