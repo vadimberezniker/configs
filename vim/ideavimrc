@@ -30,6 +30,8 @@ map <leader>s <Action>(SurroundWith)
 map <leader>p <Action>(GotoNextError)
 " Open (a)ctions dialog
 map <leader>a <Action>(GotoAction)
+" E(x)pand Region
+map <leader>x <Action>(ExpandRegion>
 
 " Make navigating back work properly when non-vim jumps are performed.
 map <C-o> <Action>(Back)
