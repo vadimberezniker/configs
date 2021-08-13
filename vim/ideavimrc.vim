@@ -7,9 +7,9 @@ set incsearch
 let mapleader=" "
 
 " Go to (d)efinition
-map <leader>d <Action>(GotoImplementation)
+map <leader>d <Action>(GotoDeclaration)
 " Find (r)eferences.
-map <leader>r <Action>(GotoDeclaration)
+map <leader>i <Action>(GotoImplementation)
 " Find (u)sages
 map <leader>u <Action>(FindUsages)
 " Open (o)utline
@@ -32,8 +32,10 @@ map <leader>p <Action>(GotoNextError)
 map <leader>a <Action>(GotoAction)
 " E(x)pand Region
 map <leader>x <Action>(ExpandRegion>
+map <leader>h <Action>(ParameterInfo)
 
 " Make navigating back work properly when non-vim jumps are performed.
 map <C-o> <Action>(Back)
 
 
+set ideajoin
