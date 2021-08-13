@@ -1,6 +1,3 @@
-source /usr/share/doc/fzf/examples/key-bindings.bash
-source /usr/share/doc/fzf/examples/completion.bash
-
 function promptcmd() {
   # Write history buffer to disk so that it's available immediately to new terminals.
   history -a
@@ -75,13 +72,17 @@ _gs() {
   cut -d: -f1
 }
 
-if [[ $- =~ i ]]; then
-  bind '"\er": redraw-current-line'
-  bind '"\C-g\C-f": "$(_gf)\e\C-e\er"'
-  bind '"\C-g\C-b": "$(_gb)\e\C-e\er"'
-  bind '"\C-g\C-t": "$(_gt)\e\C-e\er"'
-  bind '"\C-g\C-h": "$(_gh)\e\C-e\er"'
-  bind '"\C-g\C-r": "$(_gr)\e\C-e\er"'
-  bind '"\C-g\C-s": "$(_gs)\e\C-e\er"'
-fi
+if [ -f "/usr/share/doc/fzf/examples/key-bindings.bash" ]; then
+  source /usr/share/doc/fzf/examples/key-bindings.bash
+  source /usr/share/doc/fzf/examples/completion.bash
 
+  if [[ $- =~ i ]]; then
+    bind '"\er": redraw-current-line'
+    bind '"\C-g\C-f": "$(_gf)\e\C-e\er"'
+    bind '"\C-g\C-b": "$(_gb)\e\C-e\er"'
+    bind '"\C-g\C-t": "$(_gt)\e\C-e\er"'
+    bind '"\C-g\C-h": "$(_gh)\e\C-e\er"'
+    bind '"\C-g\C-r": "$(_gr)\e\C-e\er"'
+    bind '"\C-g\C-s": "$(_gs)\e\C-e\er"'
+  fi
+fi
