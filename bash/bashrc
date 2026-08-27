@@ -72,9 +72,18 @@ _gs() {
   cut -d: -f1
 }
 
-if [ -f "/usr/share/doc/fzf/examples/key-bindings.bash" ]; then
-  source /usr/share/doc/fzf/examples/key-bindings.bash
-  source /usr/share/doc/fzf/examples/completion.bash
+# Locate fzf's shell integration scripts (Debian/Ubuntu package vs. Homebrew).
+FZF_SHELL_DIR=""
+for d in /usr/share/doc/fzf/examples /opt/homebrew/opt/fzf/shell /usr/local/opt/fzf/shell ~/.fzf/shell; do
+  if [ -f "$d/key-bindings.bash" ]; then
+    FZF_SHELL_DIR="$d"
+    break
+  fi
+done
+
+if [ -n "$FZF_SHELL_DIR" ]; then
+  source "$FZF_SHELL_DIR/key-bindings.bash"
+  source "$FZF_SHELL_DIR/completion.bash"
 
   if [[ $- =~ i ]]; then
     bind '"\er": redraw-current-line'
@@ -85,4 +94,14 @@ if [ -f "/usr/share/doc/fzf/examples/key-bindings.bash" ]; then
     bind '"\C-g\C-r": "$(_gr)\e\C-e\er"'
     bind '"\C-g\C-s": "$(_gs)\e\C-e\er"'
   fi
+fi
+
+case ":$PATH:" in
+  *":$HOME/.local/bin:"*) ;;
+  *) export PATH="$HOME/.local/bin:$PATH" ;;
+esac
+
+# Machine-specific settings that shouldn't be committed.
+if [ -f ~/.bashrc.local ]; then
+  source ~/.bashrc.local
 fi
